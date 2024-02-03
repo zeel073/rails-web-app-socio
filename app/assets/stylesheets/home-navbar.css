@@ -1,0 +1,74 @@
+body {
+  margin: 0;
+  padding: 0;
+  font-family: 'Arial', sans-serif;
+}
+
+nav {
+  background-color: #333;
+  overflow: hidden;
+}
+
+nav a {
+  float: left;
+  display: block;
+  color: white;
+  text-align: center;
+  padding: 14px 16px;
+  text-decoration: none;
+  font-size: 16px;
+}
+
+nav a:hover {
+  background-color: #ddd;
+  color: black;
+}
+
+nav a.logo {
+  font-size: 24px;
+  font-weight: bold;
+}
+
+nav a.icon {
+  display: none;
+}
+
+.btn-log-out {
+  background-color: #000000;
+  color: white;
+  margin-top: 7px;
+  margin-right: 40px;
+}
+
+.logo {
+  float: left;
+  height: 50px;
+  padding: 15px 35px;
+  font-size: 40px;
+  line-height: 20px;
+}
+
+@media screen and (max-width: 600px) {
+  nav a:not(:first-child) {display: none;}
+  nav a.icon {
+    float: right;
+    display: block;
+  }
+}
+
+@media screen and (max-width: 600px) {
+  nav.responsive a.icon {
+    position: absolute;
+    right: 0;
+    top: 0;
+  }
+  nav.responsive a {
+    float: none;
+    display: block;
+    text-align: left;
+  }
+}
+
+.login-content {
+  padding-top: 180px;
+}

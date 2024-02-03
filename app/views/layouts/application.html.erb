@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>SocialMediaApp</title>
+    <meta name="viewport" content="width=device-width,initial-scale=1">
+    <%= csrf_meta_tags %>
+    <%= csp_meta_tag %>
+
+    <%= stylesheet_link_tag "application", "data-turbo-track": "reload" %>
+    <%= javascript_importmap_tags %>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
+  </head>
+
+  <body>
+    <nav class="navbar navbar-inverse">
+      <div class="container-fluid">
+        <div class="navbar-header">
+          <%= link_to "Soc.io", root_path, class: 'logo' %>
+        </div>
+        <ul class="nav navbar-nav">
+          <li class="active"><%= link_to "Home", root_path %></li>
+          <li><a href="#">Messaging</a></li>
+          <li><a href="#">Profile</a></li>
+        </ul>
+        <ul class="nav navbar-nav navbar-right">
+        <% unless user_signed_in? %>
+          <li><%= link_to "<span class='glyphicon glyphicon-user'></span> Sign Up".html_safe, new_user_registration_path %></li>
+          <li><%= link_to "<span class='glyphicon glyphicon-log-in'></span> Login".html_safe, new_user_session_path %></li>
+        <% else %>
+          <li>
+            <%= button_to destroy_user_session_path, method: :delete, class: "btn btn-log-out" do %>
+              <span class='glyphicon glyphicon-log-out'></span> Logout
+            <% end %>
+          </li>
+        <% end %>
+        </ul>
+      </div>
+    </nav>
+
+    <%= yield %>
+    <script
+      type="text/javascript"
+      src="https://cdnjs.cloudflare.com/ajax/libs/mdb-ui-kit/7.1.0/mdb.umd.min.js"
+    ></script>
+  </body>
+</html>
