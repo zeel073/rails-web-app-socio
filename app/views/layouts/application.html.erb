@@ -14,32 +14,10 @@
   </head>
 
   <body>
-    <nav class="navbar navbar-inverse">
-      <div class="container-fluid">
-        <div class="navbar-header">
-          <%= link_to "Soc.io", root_path, class: 'logo' %>
-        </div>
-        <ul class="nav navbar-nav">
-          <li class="active"><%= link_to "Home", root_path %></li>
-          <li><a href="#">Messaging</a></li>
-          <li><a href="#">Profile</a></li>
-        </ul>
-        <ul class="nav navbar-nav navbar-right">
-        <% unless user_signed_in? %>
-          <li><%= link_to "<span class='glyphicon glyphicon-user'></span> Sign Up".html_safe, new_user_registration_path %></li>
-          <li><%= link_to "<span class='glyphicon glyphicon-log-in'></span> Login".html_safe, new_user_session_path %></li>
-        <% else %>
-          <li>
-            <%= button_to destroy_user_session_path, method: :delete, class: "btn btn-log-out" do %>
-              <span class='glyphicon glyphicon-log-out'></span> Logout
-            <% end %>
-          </li>
-        <% end %>
-        </ul>
-      </div>
-    </nav>
-
-    <%= yield %>
+    <%= render "layouts/navbar" %>
+    <div style="display: grid; justify-content: center;">
+      <%= yield %>
+    </div>
     <script
       type="text/javascript"
       src="https://cdnjs.cloudflare.com/ajax/libs/mdb-ui-kit/7.1.0/mdb.umd.min.js"

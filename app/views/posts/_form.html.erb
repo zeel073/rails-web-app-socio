@@ -1,32 +1,33 @@
 <%= form_with(model: post) do |form| %>
-  <% if post.errors.any? %>
-    <div style="color: red">
-      <h2><%= pluralize(post.errors.count, "error") %> prohibited this post from being saved:</h2>
 
-      <ul>
-        <% post.errors.each do |error| %>
-          <li><%= error.full_message %></li>
-        <% end %>
-      </ul>
-    </div>
-  <% end %>
-
-  <div>
-    <%= form.label :attachment, style: "display: block" %>
-    <%= form.text_field :attachment %>
+  <div style="padding: 10px">
+    <%= form.text_field :title, class: "form-control", placeholder: "Enter the title" %>
+    <% if post.errors.include?(:title) %>
+      <p style="color: red">
+        <%= post.errors.full_messages_for(:title).join(" ,") %>
+      </p>
+    <% end %>
   </div>
 
-  <div>
-    <%= form.label :content, style: "display: block" %>
-    <%= form.text_area :content %>
+  <div style="padding: 10px">
+    <%= form.text_field :description, class: "form-control", placeholder: "Enter the description" %>
+    <% if post.errors.include?(:description) %>
+      <p style="color: red">
+        <%= post.errors.full_messages_for(:description).join(" ,") %>
+      </p>
+    <% end %>
   </div>
 
-  <div>
-    <%= form.label :user_id, style: "display: block" %>
-    <%= form.text_field :user_id %>
+  <div style="padding: 10px">
+    <%= form.text_field :keywords, class: "form-control", placeholder: "Enter the keywords" %>
+    <% if post.errors.include?(:keywords) %>
+      <p style="color: red">
+        <%= post.errors.full_messages_for(:keywords).join(" ,") %>
+      </p>
+    <% end %>
   </div>
 
-  <div>
-    <%= form.submit %>
+  <div style="padding: 10px">
+    <%= form.submit class: "btn btn-primary" %>
   </div>
 <% end %>
