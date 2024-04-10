@@ -1,14 +1,39 @@
-<p style="color: green"><%= notice %></p>
+<% if user_signed_in? %>
+  <p style="color: green"><%= notice %></p>
+  <div class="d-flex align-items-center mt-3">
+    <div class="col-xl-7 col-lg-8 col-md-10 col-sm-11 post-card">
+      <div class="card">
+        <div class="card-header">
+          Create Post
+        </div>
+        <div class="card-body">
+          <%= form_for @post, :html => {:multipart => true} do |form| %>
+            <div style="padding: 10px">
+              <div class="col pl-0">
+                <%= form.text_field :caption, class: "form-control border-0", placeholder: "Say something about this ..." %>
+              </div>
+              <% if @post.errors.include?(:caption) %>
+                <p style="color: red">
+                  <%= @post.errors.full_messages_for(:caption).join(" ,") %>
+                </p>
+              <% end %>
+            </div>
+            <div style="padding: 10px">
+              <%= form.file_field :images, multiple:true %>
+            </div>
+            <div style="padding: 10px">
+              <%= form.submit class: "btn btn-primary" %>
+            </div>
+          <% end %>
+        </div>
+      </div>
 
-<h1>Posts</h1>
+      <div id="posts">
+        <%= render 'posts_list' %>
+      </div>
+    </div>
+  </div>
 
-<div id="posts">
-  <% @posts.each do |post| %>
-    <%= render post %>
-    <p>
-      <%= link_to "Show this post", post %>
-    </p>
-  <% end %>
-</div>
-
-<%= link_to "New post", new_post_path %>
+<% else %>
+  <h1>Please log_in or sign_in to see all the posts</h1>
+<% end %>

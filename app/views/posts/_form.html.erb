@@ -1,32 +1,21 @@
 <%= form_with(model: post) do |form| %>
-  <% if post.errors.any? %>
-    <div style="color: red">
-      <h2><%= pluralize(post.errors.count, "error") %> prohibited this post from being saved:</h2>
-
-      <ul>
-        <% post.errors.each do |error| %>
-          <li><%= error.full_message %></li>
-        <% end %>
-      </ul>
+  <div style="padding: 10px">
+    <%= form.text_field :caption, class: "form-control", placeholder: "Enter the caption" %>
+    <div class="col pl-0">
+      <%= form.text_field :caption, class: "form-control border-0", placeholder: "Say something about this ..." %>
     </div>
-  <% end %>
-
-  <div>
-    <%= form.label :attachment, style: "display: block" %>
-    <%= form.text_field :attachment %>
+    <% if post.errors.include?(:caption) %>
+      <p style="color: red">
+        <%= post.errors.full_messages_for(:caption).join(" ,") %>
+      </p>
+    <% end %>
   </div>
 
-  <div>
-    <%= form.label :content, style: "display: block" %>
-    <%= form.text_area :content %>
+  <div style="padding: 10px">
+    <%= form.file_field :images, multiple:true %>
   </div>
 
-  <div>
-    <%= form.label :user_id, style: "display: block" %>
-    <%= form.text_field :user_id %>
-  </div>
-
-  <div>
-    <%= form.submit %>
+  <div style="padding: 10px">
+    <%= form.submit class: "btn btn-primary" %>
   </div>
 <% end %>
