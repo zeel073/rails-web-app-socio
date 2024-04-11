@@ -1,0 +1,23 @@
+<% posts.each do |post| %>
+  <div class="col-4">
+    <%
+=begin%>
+ <%= link_to post_path(post) do %> 
+<%
+=end%>
+      <div class="post-stat d-flex justify-content-center align-items-center">
+        <span>
+          <i class="fa fa-heart" aria-hidden="true"></i>
+          <%= post.likes.size %>
+          <i class="ml-3 fa fa-comment" aria-hidden="true"></i>
+          <%= post.comments.size %>
+        </span>
+      </div>
+      <%= image_tag post.images.first, class: "", style: 'width: 100px, height: 100px' %>
+    <%
+=begin%>
+ <% end %> 
+<%
+=end%>
+  </div>
+<% end %>

@@ -1,5 +1,12 @@
 Rails.application.routes.draw do
-  resources :posts
+  resources :users, only: [:index, :show]
+
+  resources :posts, only: [:index, :show, :create, :destroy] do
+    resources :likes, only: [:create, :destroy], shallow: true
+    resources :comments, only: [:index, :create, :destroy], shallow: true
+    resources :bookmarks, only: [:create, :destroy], shallow: true
+  end
+
   devise_for :users
   # Define your application routes per the DSL in https://guides.rubyonrails.org/routing.html
   root "posts#index"

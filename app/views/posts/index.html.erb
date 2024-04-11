@@ -1,10 +1,10 @@
 <% if user_signed_in? %>
   <p style="color: green"><%= notice %></p>
-  <div class="d-flex align-items-center mt-3">
+  <div style="display: flex; flex-direction: column; align-items: center; margin-top: 20px; width: 600px">
     <div class="col-xl-7 col-lg-8 col-md-10 col-sm-11 post-card">
-      <div class="card">
+      <div class="card" style="display: flex; flex-direction: column; align-items: center; justify-content: center; ">
         <div class="card-header">
-          Create Post
+          <h3>Create Post</h3>
         </div>
         <div class="card-body">
           <%= form_for @post, :html => {:multipart => true} do |form| %>
@@ -28,7 +28,7 @@
         </div>
       </div>
 
-      <div id="posts">
+      <div id="posts" style="display: flex; flex-direction: column; align-items: center; justify-content: center; ">
         <%= render 'posts_list' %>
       </div>
     </div>
