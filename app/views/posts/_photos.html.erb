@@ -1,6 +1,8 @@
-<%= link_to post_path(post) do %>
+<%
+=begin%>
+ <%= link_to post_path(post) do %>
   <% if post.images.size == 1 %>
-    <%= image_tag post.images.first, class: "card-img-top", style: "object-fit: contain; width: 200px; height: 200px;" %>
+    <%= image_tag post.images.first, class: "card-img-top", style: "object-fit: contain; height: 400px;" %>
   <% else %>
     <div class="carousel slide" data-ride="carousel" id="carousel-post-<%= @post.id %>">
       <div class="carousel-inner">
@@ -10,7 +12,7 @@
           <% else %>
             <div class="carousel-item">
           <% end %>
-              <%= image_tag photo, class: "card-img-top", style: "object-fit: contain; width: 200px; height: 200px;" %>
+              <%= image_tag photo, class: "card-img-top", style: "object-fit: contain; height: 400px;" %>
             </div>
         <% end %>
       </div>
@@ -24,4 +26,15 @@
       </a>
     </div>
   <% end %>
-<% end %>
+<% end %> 
+<%
+=end%>
+
+<div class="card" style="margin-top: 20px; width: 45rem; border: 4px solid black">
+  <%= image_tag post.images.first, class: "card-img-top", style: "object-fit: contain; width: 44rem;" %>
+  <div class="card-body" style="margin-top: 15px">
+    <p class="card-text text-center">
+      <%= post.caption %>
+    </p>
+  </div>
+</div>
